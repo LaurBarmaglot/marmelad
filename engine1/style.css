@@ -200,7 +200,7 @@
 	font-size: 0.857em;
 	padding:0.8em;
 }#wowslider-container1 .ws_images > ul{
-	animation: wsBasic 50s infinite;
+	animation: wsBasic 75s infinite;
 	-moz-animation: wsBasic 50s infinite;
 	-webkit-animation: wsBasic 50s infinite;
 }
