@@ -1,30 +1,191 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Marmelad</title>
+	<title>Movieland</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<link rel="stylesheet" type="text/css" href="engine1/style.css" />
 		<script
 		src="https://code.jquery.com/jquery-1.12.4.min.js"
 		integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
 		crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	
 
 </head>
-<body style="background-color:#d7d7d7;margin:auto">
-	
+<body>
 
-	<div id="wowslider-container1">
-	<div class="ws_images"><ul>
-		<li><img src="data1/images/_1.jpg" alt="facad" title="Продається 1-кімнатна квартира від забудовника" id="wows1_2"/></li>
-		<li><img src="data1/images/_2.jpg" alt="hall" title="м.Чернівці, вул.Кагарлицька, 2 Б" id="wows1_3"/></li>
-		<li><img src="data1/images/_3.jpg" alt="guest" title="063 696 47 48" id="wows1_4"/></li>
-		<li><img src="data1/images/_4.jpg" alt="bath" title="Сучасний ремонт" id="wows1_5"/></li>
-	</ul></div>
-	
-	</div>	
-	<script type="text/javascript" src="engine1/wowslider.js"></script>
-	<script type="text/javascript" src="engine1/script.js"></script>
+	<div class="container">
 
+		  <div class="disappear">
+			<span>M</span> <span>o</span> <span>v</span> <span>i</span> <span>E</span> <span>L</span> <span>A</span> <span>n</span> <span>D</span>
+		</div>
+
+			<div class="container2">
+				<a class="fa fa-apple" id="apple"></a>
+				<a class="fa fa-linkedin-square" id="twitter"></a>
+				<a class="fa fa-github-square github" id="github"></a>
+				<a class="fa fa-facebook-square" id="facebook" href="https://www.facebook.com/deathbarmaglot"></a>
+			  </div>
+
+			</div>
+	<!-- <script type="text/javascript" src="engine1/wowslider.js"></script>
+	<script type="text/javascript" src="engine1/script.js"></script> -->
+	<div id="container3">
+		<span id="text1"></span>
+		<span id="text2"></span>
+	</div>
+	
+	<!-- The SVG filter used to create the merging effect -->
+	<svg id="filters">
+		<defs>
+			<filter id="threshold">
+				<!-- Basically just a threshold effect - pixels with a high enough opacity are set to full opacity, and all other pixels are set to completely transparent. -->
+				<feColorMatrix in="SourceGraphic"
+						type="matrix"
+						values="1 0 0 0 0
+										0 1 0 0 0
+										0 0 1 0 0
+										0 0 0 255 -140" />
+			</filter>
+		</defs>
+	</svg>
 </body>
+<script>
+	/*
+	This pen cleverly utilizes SVG filters to create a "Morphing Text" effect. Essentially, it layers 2 text elements on top of each other, and blurs them depending on which text element should be more visible. Once the blurring is applied, both texts are fed through a threshold filter together, which produces the "gooey" effect. Check the CSS - Comment the #container rule's filter out to see how the blurring works!
+*/
+
+const elts = {
+	text1: document.getElementById("text1"),
+	text2: document.getElementById("text2")
+};
+
+const texts = `
+And you open the door and you step inside
+Where inside our hearts
+Now imagine your pain as a white ball of healing light
+That's right, your pain
+The pain itself is a white ball of healing light
+I don't think so
+This is your life, good to the last drop
+Doesn't get any better than this
+This is your life and it's ending one minute at a time
+This isn't a seminar, this isn't a weekend retreat
+Where you are now you can't even imagine what the bottom will be like
+Only after disaster can we be resurrected
+It's only after you've lost everything that you're free to do anything
+Nothing is static, everything is evolving, everything is falling apart
+This is your life, this is your life, this is your life, this is your life
+Doesn't get any better than this
+This is your life, this is your life, this is your life, this is your life
+And it and it's ending one-minute at a time
+You are not a beautiful and unique snowflake
+You are the same decaying organic matter as everything else
+We are all part of the same compost heap
+We are the all singing, all dancing, crap of the world
+You are not your bank account
+You are not the clothes you wear
+You are not the contents of your wallet
+You are not your bowel cancer
+You are not your grande latte
+You are not the car you drive
+You are not your fucking khaki's
+You have to give up, you have to give up
+You have to realize that someday you will die
+Until you know that, you are useless
+I say let me never be complete
+I say may I never be content
+I say deliver me from Swedish furniture
+I say deliver me from clever arts
+I say deliver me from clear skin and perfect teeth
+I say you have to give up
+I say evolve, and let the chips fall where they may
+This is your life, this is your life, this is your life, this is your life
+Doesn't get any better than this
+This is your life, this is your life, this is your life, this is your life
+And it and it's ending one-minute at a time
+You have to give up, you have to give up
+I want you to hit me as hard as you can
+I want you to hit me as hard as you can
+Welcome to Fight Club
+If this is your first night, you have to fight
+`.split(" ");
+
+// Controls the speed of morphing.
+const morphTime = 1;
+const cooldownTime = 0.15;
+
+let textIndex = texts.length - 1;
+let time = new Date();
+let morph = 0;
+let cooldown = cooldownTime;
+
+elts.text1.textContent = texts[textIndex % texts.length];
+elts.text2.textContent = texts[(textIndex + 1) % texts.length];
+
+function doMorph() {
+	morph -= cooldown;
+	cooldown = 0;
+	
+	let fraction = morph / morphTime;
+	
+	if (fraction > 1) {
+		cooldown = cooldownTime;
+		fraction = 1;
+	}
+	
+	setMorph(fraction);
+}
+
+// A lot of the magic happens here, this is what applies the blur filter to the text.
+function setMorph(fraction) {
+	// fraction = Math.cos(fraction * Math.PI) / -2 + .5;
+	
+	elts.text2.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
+	elts.text2.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
+	
+	fraction = 1 - fraction;
+	elts.text1.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
+	elts.text1.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
+	
+	elts.text1.textContent = texts[textIndex % texts.length];
+	elts.text2.textContent = texts[(textIndex + 1) % texts.length];
+}
+
+function doCooldown() {
+	morph = 0;
+	
+	elts.text2.style.filter = "";
+	elts.text2.style.opacity = "100%";
+	
+	elts.text1.style.filter = "";
+	elts.text1.style.opacity = "0%";
+}
+
+// Animation loop, which is called every frame.
+function animate() {
+	requestAnimationFrame(animate);
+	
+	let newTime = new Date();
+	let shouldIncrementIndex = cooldown > 0;
+	let dt = (newTime - time) / 1000;
+	time = newTime;
+	
+	cooldown -= dt;
+	
+	if (cooldown <= 0) {
+		if (shouldIncrementIndex) {
+			textIndex++;
+		}
+		
+		doMorph();
+	} else {
+		doCooldown();
+	}
+}
+
+// Start the animation.
+animate();
+
+</script>
 </html>
