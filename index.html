@@ -13,23 +13,60 @@
 
 </head>
 <body>
-
+	<!-- <div class="words word-1">
+		<span>З</span>
+			<span>А</span>
+			<span>Х</span>
+			<span>І</span>
+			<span>Д</span>
+			<span>Н</span>
+			<span>И</span>
+			<span>Й</span>
+	  </div>
+	  
+	  <div class="words word-2">
+		<span>С</span>
+			<span>У</span>
+			<span>Д</span>
+			<span>И</span>
+			<span>Н</span>
+			<span>Н</span>
+			<span>И</span>
+			<span>Й</span>
+	  </div>
+	  
+	  <div class="words word-3">
+	
+		<span>Ц</span>
+		<span>Е</span>
+		<span>Н</span>
+		<span>Т</span>
+		<span>Р</span>
+	  </div> -->
 	<div class="container">
-
-		  <div class="disappear">
-			<span>M</span> <span>o</span> <span>v</span> <span>i</span> <span>E</span> <span>L</span> <span>A</span> <span>n</span> <span>D</span>
+		
+		<div class="disappear">		
+			<span>Західний</span>
+			<span>Судинний</span>
+			<span> Центр</span>
+	
 		</div>
+		
+		<!-- <canvas id="mon_canvas" width="300" height="300" style="background:transparent;"> 
+			Texte 
+		  </canvas> -->
+
+		<p>+38(066) <br>138 00 06<br> <a href="#">Вул.Воробкевича,33</a></p>
 
 			<div class="container2">
-				<a class="fa fa-apple" id="apple"></a>
-				<a class="fa fa-linkedin-square" id="twitter"></a>
-				<a class="fa fa-github-square github" id="github"></a>
+				<p class="fa fa-apple" id="apple"></p>
+				<p class="fa fa-linkedin-square" id="twitter"></p>
+				<p class="fa fa-github-square github" id="github"></p>
 				<a class="fa fa-facebook-square" id="facebook" href="https://www.facebook.com/deathbarmaglot"></a>
 			  </div>
 
 			</div>
-	<!-- <script type="text/javascript" src="engine1/wowslider.js"></script>
-	<script type="text/javascript" src="engine1/script.js"></script> -->
+
 	<div id="container3">
 		<span id="text1"></span>
 		<span id="text2"></span>
@@ -49,18 +86,22 @@
 			</filter>
 		</defs>
 	</svg>
-</body>
+	
+	</body>
+
+
 <script>
-	/*
-	This pen cleverly utilizes SVG filters to create a "Morphing Text" effect. Essentially, it layers 2 text elements on top of each other, and blurs them depending on which text element should be more visible. Once the blurring is applied, both texts are fed through a threshold filter together, which produces the "gooey" effect. Check the CSS - Comment the #container rule's filter out to see how the blurring works!
-*/
 
 const elts = {
 	text1: document.getElementById("text1"),
 	text2: document.getElementById("text2")
 };
+const texts =`Лазерне безопераційне лікування Варикозу! Усього за 1	годинУ! У	клініці єврОпейського рівня! 
+Тисячі задоволених пацієнтів!
+`.split(" ");
 
-const texts = `
+
+const text = `
 And you open the door and you step inside
 Where inside our hearts
 Now imagine your pain as a white ball of healing light
@@ -112,8 +153,8 @@ If this is your first night, you have to fight
 `.split(" ");
 
 // Controls the speed of morphing.
-const morphTime = 1;
-const cooldownTime = 0.15;
+const morphTime = .7;
+const cooldownTime = 0.1;
 
 let textIndex = texts.length - 1;
 let time = new Date();

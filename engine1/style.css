@@ -1,12 +1,102 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Raleway:900&display=swap');
+
+.words {
+  color: #fff;
+  font-size: 0;
+  line-height: 1.5;
+}
+
+.words span {
+  font-size: 5rem;
+  display: inline-block;
+  animation: move 3s ease-in-out infinite;
+}
+
+@keyframes move {
+  0% {
+    transform: translate(-30%, 0);
+  }
+  50% {
+    text-shadow: 0 25px 50px rgba(0, 0, 0, 0.75);
+  }
+  100% {
+    transform: translate(30%, 0);
+  }
+}
+
+.words span:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.words span:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.words span:nth-child(4) {
+  animation-delay: 1.5s;
+}
+
+.words span:nth-child(5) {
+  animation-delay: 2s;
+}
+
+.words span:nth-child(6) {
+  animation-delay: 2.5s;
+}
+
+.words span:nth-child(7) {
+  animation-delay: 3s;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 24px;
+}
+
+p {
+  font-weight: 900;
+  text-align: center;
+  font-size: 30px;
+  font-family: Raleway, sans-serif;
+  text-transform: uppercase;
+  margin-left: 5%;
+  margin-top: 17%;
+  background: linear-gradient(90deg, #05abab, #fff, #05abab);
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: shine 5s ease-out infinite;
+  position: relative;
+}
+
+@keyframes shine {
+  0% {
+    background-position-x: -500%;
+  }
+  100% {
+    background-position-x: 500%;
+  }
+}
+
 body {
+
   height:100vh;
   font-family: 'Poppins', sans-serif;
   font-size:3vw;
   text-transform: uppercase;
   width: 100vw;
-  background: #18191f;
+  background:  #05abab;
   overflow: hidden;
 }
 .disappear {
@@ -25,7 +115,7 @@ body {
   display: inline-block;
   color:transparent;
   text-shadow: 0px 0px 0px white;
-  animation-duration: 5s;
+  animation-duration: 4.4s;
   animation-iteration-count: infinite;
 }
 .disappear span:nth-child(1){
@@ -61,16 +151,21 @@ body {
 }
 .disappear span:nth-child(9){
   animation-name: disappearight;
-  animation-delay: 2.3s;
+  animation-delay: 2.2s;
 }
 @keyframes disappearleft{
-  30% {transform: skew(50deg) translateY(-200%);
+  10% {transform: skew(50deg) translateY(-200%);
       text-shadow: 0px 0px 50px;
         opacity: 0;
   }
 }
 @keyframes disappearight{
-  30% {transform: skew(-50deg) translateY(-200%);
+  /* 90% {transform: skew(0deg) translateY(100%);
+    text-shadow: 0px 0px 50px;
+      opacity: 0;
+} */
+
+  10% {transform: skew(-50deg) translateY(-200%);
       text-shadow: 0px 0px 50px;
         opacity: 0;
   }
@@ -81,7 +176,9 @@ body {
   padding:0;
 }
 .container {
-  background: #2c001e;
+  background: #05abab;
+  /* background: #2c001e; */
+    margin-left: 7%;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -146,6 +243,7 @@ img {
 
 
 .container2 {
+  margin-top: 17%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -156,17 +254,17 @@ img {
 #twitter,
 #github,
 #facebook {
-  font-size: 1em;
-  background-color: #18191f;
+  font-size: 0.8em;
+  background-color: #05abab;
   color: #fff;
-  box-shadow: 2px 2px 2px #00000080, 10px 1px 12px #00000080,
-    2px 2px 10px #00000080, 2px 2px 3px #00000080, inset 2px 2px 10px #00000080,
-    inset 2px 2px 10px #00000080, inset 2px 2px 10px #00000080,
-    inset 2px 2px 10px #00000080;
+  box-shadow: 2px 2px 2px #ccc, 10px 1px 12px #ccc,
+    2px 2px 10px #ccc, 2px 2px 3px #ccc, inset 2px 2px 10px #ccc,
+    inset 2px 2px 10px #ccc, inset 2px 2px 10px #ccc,
+    inset 2px 2px 10px #ccc;
   border-radius: 29px;
   padding: 11px 19px;
   margin: 0 40px;
-  animation: animate 3s linear infinite;
+  animation: animate 12s linear infinite;
   text-shadow: 0 0 50px #0072ff, 0 0 100px #0072ff, 0 0 150px #0072ff,
     0 0 200px #0072ff;
 }
