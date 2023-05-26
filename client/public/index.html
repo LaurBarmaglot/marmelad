@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+  <head>
+    <title>Web</title>
+    <style>
+body {
+  font-family: 'Helvetica', sans-serif;
+  background-color: #f6f6f6;
+}
+
+/* Buttons */
+button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #06c8ff;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #a6c8ff;
+}
+
+    </style>
+  </head>
+  <body>
+
+  <main>
+    <div id="root"></div>
+  </main>
+
+<button onclick="window.location.href = 'http://localhost:5000/api/orders'">Orders</button>
+<button onclick="window.location.href = 'http://localhost:5000/api/shops'">Shops</button>
+<button onclick="window.location.href = 'http://localhost:5000/api/items'">Items</button>
+<button onclick="window.location.href = 'http://localhost:5000/api/users'">Users</button>
+
+</body>
+</html>

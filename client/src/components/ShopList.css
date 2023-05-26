@@ -1,0 +1,33 @@
+.shop-list {
+  background-color: #f0f0f0;
+  padding: 10px;
+}
+
+.shop-item {
+  margin-bottom: 10px;
+  padding: 5px;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  width: 200px;
+  height: 50px;
+  text-align: center;
+}
+
+.shop-list-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.shop-name {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.shop-description {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #888;
+}
