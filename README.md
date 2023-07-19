@@ -3,6 +3,9 @@ cd client
 npm install express ejs
 npm install axios
 npm init -y
+npm i react-router-dom
+npm i -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
 
 cd server
 npm install express cors path morgan http-errors mongoose dotenv mongodb

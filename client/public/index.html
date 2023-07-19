@@ -32,10 +32,17 @@ button:hover {
     <div id="root"></div>
   </main>
 
-<button onclick="window.location.href = 'http://localhost:5000/api/orders'">Orders</button>
-<button onclick="window.location.href = 'http://localhost:5000/api/shops'">Shops</button>
-<button onclick="window.location.href = 'http://localhost:5000/api/items'">Items</button>
-<button onclick="window.location.href = 'http://localhost:5000/api/users'">Users</button>
-
-</body>
+  <script>
+    
+    function redirectTo(url) {
+      window.location.href = `http://${window.location.host}${url}`;
+    }
+  </script>
+  
+  <button onclick="redirectTo('/api/orders')">Orders</button>
+  <button onclick="redirectTo('/api/shops')">Shops</button>
+  <button onclick="redirectTo('/api/items')">Items</button>
+  <button onclick="redirectTo('/api/users')">Users</button>
+  
+  </body>
 </html>

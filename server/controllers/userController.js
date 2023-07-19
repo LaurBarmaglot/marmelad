@@ -1,19 +1,13 @@
 const User = require('../models/userModel');
 
-exports.createUser = (req, res) => {
-  const { name, email, password } = req.body;
-
-  const user = new User({
-    name,
-    email,
-    password
-  });
-
-  user.save((err, savedUser) => {
-    if (err) {
-      res.status(500).json({ error: 'Internal server error' });
-    } else {
-      res.json(savedUser);
-    }
-  });
+exports.getUsers = async (req, res) => {
+  try {
+    const users = await User.find()
+      .populate('orders', 'shopId items')
+      .exec();
+    res.json({ users });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: 'Failed to fetch users' });
+  }
 };

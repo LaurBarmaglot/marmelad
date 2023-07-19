@@ -8,7 +8,7 @@ const ShopList = ({ shops }) => {
       ) : (
         shops.map((shop) => (
           <div key={shop.id} className="shop-item">
-            <h4>{shop.name}</h4>
+              <h4 className="shop-name">{shop.name}</h4>
           </div>
         ))
       )}

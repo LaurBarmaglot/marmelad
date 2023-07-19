@@ -1,12 +1,14 @@
 const Shop = require('../models/shopModel');
 
-// Controller method for getting all shops
-exports.getAllShops = (req, res) => {
-  Shop.find({}, (err, shops) => {
-    if (err) {
-      res.status(500).json({ error: 'Internal server error' });
-    } else {
-      res.json(shops);
-    }
-  });
+exports.getShops = async (req, res) => {
+  try {
+    const shops = await Shop.find()
+      .populate('items', 'name price')
+      .exec();
+
+    res.json({ shops });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: 'Failed to fetch shops' });
+  }
 };
